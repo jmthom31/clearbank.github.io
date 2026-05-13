@@ -18,29 +18,26 @@ import ExternalLink from 'src/components/external-link';
 <p>All information on this page describes a solution that is <strong>not yet live in production and therefore could change</strong>. This includes any endpoint and webhook details. The information is being provided early to aid you in integrating with our API in our EU simulation environment.</p>
 </Callout>
 
-
 SEPA Direct Debit (SDD) is a pan-European payment scheme that enables organisations to collect euro-denominated payments from a payer’s account, provided the payer has authorised the collection in advance. The scheme is defined and maintained by the <ExternalLink href="https://www.europeanpaymentscouncil.eu/what-we-do/sepa-direct-debit">European Payments Council (EPC)</ExternalLink> and is available across SEPA-participating countries.
 
 This page describes **SEPA Core Direct Debit only**, where ClearBank acts as the **debtor bank**. In this model, ClearBank receives direct debit instructions from the scheme and processes the resulting payment.
 
 SEPA Direct Debits are initiated by the payee (creditor) rather than the payer. This makes the scheme suitable for recurring payments, subscriptions, and variable-amount collections where a prior authorisation exists.
 
----
-
 ### SEPA Direct Debit mandates
 
-A SEPA Direct Debit mandate is the payer’s authorisation that allows a creditor to initiate one or more direct debit collections against the payer’s account. The mandate provides the legal basis for each collection submitted under the scheme.
+An SDD mandate is the payer’s authorisation for a creditor to initiate direct debit collections against the payer’s account. A mandate provides a legal basis for each collection submitted under the scheme.
 
-From an integration perspective, mandates are **referenced rather than transmitted** as part of the payment flow. ClearBank receives mandate information from the scheme but does **not** create, store, validate, or manage mandates.
+From an integration perspective, mandates are **referenced rather than transmitted** as part of the payment flow: ClearBank receives mandate details from the scheme but does **not** create, store, validate, or manage mandates directly.
 
 You are responsible for ensuring that:
 
 - A valid mandate exists for each collection.
 - Mandate details can be produced in the event of a dispute or scheme enquiry.
-- Mandates are managed in accordance with the EPC SEPA Core Direct Debit rulebook.
+- Mandates are managed in accordance with the EPC's SEPA Core Direct Debit rulebook.
 
 <Callout colour="blue">  
-<strong>Note:</strong> ClearBank does not validate mandate existence or correctness when processing SEPA Direct Debit collections. Responsibility for mandate management remains with the creditor.
+<strong>Note:</strong> ClearBank does not validate mandate existence or correctness when processing SDD collections. Responsibility for mandate management remains with the creditor.
 </Callout>
 
 ---
@@ -105,10 +102,15 @@ ClearBank uses webhooks to notify you of inbound SEPA Core Direct Debit activity
 >  
 > _SEPA Direct Debit Payment Settled webhook_
 
+### Ledger notification
+
+> **Placeholder**  
+>  
+> _Customer Accounts Transaction Completed_
+
 ---
 
 ## Related content
 
 - /eu/docs/eur-payments/sepa-credit-transfer
 - /eu/docs/eur-payments/sepa-instant-credit-transfer
-
