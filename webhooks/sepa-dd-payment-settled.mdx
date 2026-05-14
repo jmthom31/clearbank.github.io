@@ -1,0 +1,55 @@
+---
+title: "SEPA Direct Debits Payment Settled webhook"
+version: 1
+webhook: true
+---
+
+Sent when a SEPA Direct Debit payment has been settled. Follows the Incoming Collection Received webhook.
+
+#### Request body
+
+```json
+{
+  "Type": "Sepa.DirectDebits.Payment.Settled",
+  "Version": 1,
+  "Payload": {...},
+  "Nonce":
+}
+```
+
+#### Payload
+
+| Element                  | Description                                                                                                                                                                                                                                                                                                |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `PaymentId`              | **Required**<br />ClearBank identifier that uniquely identifies the payment instruction.<br/>Type: `string`<br/>Format: `guid`<br/>Max. Length: `36`<br/>Min. Length: `36`<br /> Pattern: `^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$`                                  |
+
+#### Example SEPA Direct Debit Payment Settled webhook request body
+
+```json
+{
+  "Type": "Sepa.DirectDebits.Payment.Settled",
+  "Version": 1,
+  "Payload": {
+    "paymentId": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+    "transactionId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "settlementDate": "2024-06-01",
+    "debitCreditCode": "Debit",
+    "interbankSettlementAmount": {
+      "amount": 1224.48,
+      "currency": "EUR"
+    },
+    "debtorAccount": {
+      "iban": "GB24BKEN10000031510604"
+    }
+  },
+  "Nonce": 188104452
+}
+```
+
+#### Example webhook response
+
+```json
+{
+  "Nonce": 188104452
+}
+```

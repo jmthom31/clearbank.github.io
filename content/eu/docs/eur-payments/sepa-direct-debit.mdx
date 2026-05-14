@@ -80,9 +80,65 @@ Because processing is not immediate, you should design your integration to be **
 
 ## Simulating inbound SEPA Direct Debits
 
-> **Placeholder**  
->  
-> _SEPA Direct Debit inbound simulation endpoint_
+<EndpointBlock
+  type="post"
+  title="Simulate an inbound SDD payment"
+  endpoints={[
+    {
+      path: "/v1/inbound-direct-debits",
+      version: "1.0.SepaDD",
+      webhooks: [
+      ]
+    }
+  ]}
+/>
+
+### Example request
+
+```json
+[
+  {
+    "endToEndId": "E2E-REF-0947eaf62b51496b",
+    "instructionId": "INSTR-0947eaf62b51496b",
+    "txId": "TXN-0947eaf62b51496b",
+    "mandateId": "MND-0947eaf62b51496b",
+    "amount": {
+      "amount": 100.00,
+      "currency": "EUR"
+    },
+    "debtor": {
+      "name": "John Doe",
+      "postalAddress": {
+        "streetName": "Morissette Union",
+        "buildingNumber": "99",
+        "townName": "Sipesville",
+        "postCode": "RV7 4IS",
+        "countrySubdivision": "Buckinghamshire",
+        "country": "GB"
+      }
+    },
+    "debtorAccount": {
+      "accountIban": "GB24BKEN10000031510604"
+    },
+    "creditor": {
+      "name": "Jane Smith",
+      "postalAddress": {
+        "streetName": "High Street",
+        "buildingNumber": "1",
+        "townName": "London",
+        "postCode": "EC1A 1BB",
+        "country": "GB"
+      }
+    },
+    "creditorAccount": {
+      "accountIban": "GB29NWBK60161331926819"
+    },
+    "remittanceInformationUnstructured": "Invoice 12345",
+    "requestedCollectionDate": "2024-06-01",
+    "sequenceType": "FRST"
+  }
+]
+```
 
 ---
 
@@ -107,25 +163,3 @@ ClearBank uses webhooks to notify you of inbound SEPA Core Direct Debit activity
 > **Placeholder**  
 >  
 > _Customer Accounts Transaction Completed_
-
----
-
-## Related content
-
-<EndpointBlock
-  type="post"
-  title="Simulate an inbound SDD payment"
-  endpoints={[
-    {
-      path: "/v1/inbound-direct-debits",
-      version: "1.0.SepaDD",
-      webhooks: [
-      ]
-    }
-  ]}
-/>
-
-
-
-- /eu/docs/eur-payments/sepa-credit-transfer
-- /eu/docs/eur-payments/sepa-instant-credit-transfer
