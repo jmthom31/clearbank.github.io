@@ -72,6 +72,7 @@
         "type": "object",
         "properties": {
           "accountIban": {
+            "description": "International Bank Account Number (IBAN) of the account. Must be a structurally valid IBAN.",
             "type": "string",
             "nullable": true
           }
@@ -82,6 +83,7 @@
         "type": "object",
         "properties": {
           "name": {
+            "description": "The name used to identify the legal owner of the account.",
             "type": "string",
             "nullable": true
           },
@@ -95,6 +97,7 @@
         "type": "object",
         "properties": {
           "name": {
+            "description": "The name used to identify the legal owner of the account.",
             "type": "string",
             "nullable": true
           },
@@ -108,18 +111,22 @@
         "type": "object",
         "properties": {
           "endToEndId": {
+            "description": "Unique identification, as assigned by the originating party, to unambiguously identify the transaction. Passed on unchanged throughout the entire end-to-end chain.",
             "type": "string",
             "nullable": true
           },
           "instructionId": {
+            "description": "Unique identifier used by the client financial institution to identify this instruction in the simulator. Recommended for traceability.",
             "type": "string",
             "nullable": true
           },
           "txId": {
+            "description": "Unique identifier used by the client financial institution to identify this transaction in scheme.",
             "type": "string",
             "nullable": true
           },
           "mandateId": {
+            "description": "Unique identification, as assigned by the creditor, to unambiguously identify the mandate.",
             "type": "string",
             "nullable": true
           },
@@ -139,19 +146,23 @@
             "$ref": "#/components/schemas/Account"
           },
           "remittanceInformationUnstructured": {
+            "description": "Unstructured remittance information for this transaction. Either unstructured or structured may be provided; not both.",
             "type": "string",
             "nullable": true
           },
           "remittanceInformationStructured": {
+            "description": "Structured remittance information for this transaction. Either structured or unstructured may be provided; not both.",
             "type": "string",
             "nullable": true
           },
           "requestedCollectionDate": {
+            "description": "The date on which the creditor requests the funds to be collected.",
             "type": "string",
             "format": "date-time",
             "nullable": true
           },
           "sequenceType": {
+            "description": "Identifies the direct debit sequence. FRST = First, RCUR = Recurrent, FNAL = Final, OOFF = One-off.",
             "type": "string",
             "nullable": true
           }
@@ -159,13 +170,22 @@
         "additionalProperties": false
       },
       "InterBankSettlementAmount": {
+        "required": [
+          "amount",
+          "currency"
+        ],
         "type": "object",
         "properties": {
           "amount": {
+            "description": "The amount to be collected between creditor and debtor.",
+            "minimum": 0.01,
+            "maximum": 999999999.99,
             "type": "number",
             "format": "double"
           },
           "currency": {
+            "description": "Currency used. Only EUR is supported.",
+            "example": "EUR",
             "type": "string",
             "nullable": true
           }
@@ -173,65 +193,97 @@
         "additionalProperties": false
       },
       "PostalAddress": {
+        "required": [
+          "streetName",
+          "country"
+        ],
         "type": "object",
         "properties": {
           "department": {
+            "description": "Identification of a division of a large organisation or building.",
             "type": "string",
             "nullable": true
           },
           "subDepartment": {
+            "description": "Identification of a sub-division of a large organisation or building.",
             "type": "string",
             "nullable": true
           },
           "streetName": {
+            "description": "Name of a street or thoroughfare.",
+            "minLength": 1,
+            "maxLength": 70,
             "type": "string",
             "nullable": true
           },
           "buildingNumber": {
+            "description": "Number that identifies the position of a building on a street.",
+            "minLength": 1,
+            "maxLength": 16,
             "type": "string",
             "nullable": true
           },
           "buildingName": {
+            "description": "Building room number.",
             "type": "string",
             "nullable": true
           },
           "floor": {
+            "description": "Floor or storey within a building.",
             "type": "string",
             "nullable": true
           },
           "postBox": {
+            "description": "Numbered box in a post office, assigned to a person or organisation, where letters are kept.",
             "type": "string",
             "nullable": true
           },
           "room": {
+            "description": "Room name or number within a building.",
             "type": "string",
             "nullable": true
           },
           "townName": {
+            "description": "Name of a built-up area, with defined boundaries, and a local government.",
+            "minLength": 1,
+            "maxLength": 35,
             "type": "string",
             "nullable": true
           },
           "townLocationName": {
+            "description": "Specific location name within the town.",
             "type": "string",
             "nullable": true
           },
           "districtName": {
+            "description": "Identifies a subdivision within a country sub-division.",
             "type": "string",
             "nullable": true
           },
           "postCode": {
+            "description": "Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail.",
+            "minLength": 1,
+            "maxLength": 16,
             "type": "string",
             "nullable": true
           },
           "countrySubdivision": {
+            "description": "Identifies a subdivision of a country such as state, region, or county.",
+            "minLength": 1,
+            "maxLength": 35,
             "type": "string",
             "nullable": true
           },
           "country": {
+            "description": "Nation with its own government, given as an ISO 3166-1 alpha-2 country code.",
+            "minLength": 2,
+            "maxLength": 2,
+            "pattern": "^[A-Z]{2,2}$",
             "type": "string",
             "nullable": true
           },
           "addressLine": {
+            "description": "Address presented in a freetext format, as defined by postal services.",
             "type": "string",
             "nullable": true
           }
