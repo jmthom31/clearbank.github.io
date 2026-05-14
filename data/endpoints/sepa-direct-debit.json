@@ -126,12 +126,15 @@
       "DirectDebit": {
         "required": [
           "endToEndId",
+          "txId",
           "mandateId",
           "amount",
           "debtor",
           "debtorAccount",
           "creditor",
-          "creditorAccount"
+          "creditorAccount",
+          "sequenceType",
+          "requestedCollectionDate"
         ],
         "type": "object",
         "properties": {
@@ -144,13 +147,15 @@
           },
           "instructionId": {
             "description": "Unique identifier used by the client financial institution to identify this instruction in the simulator. Recommended for traceability.",
-            "minimum": 1,
+            "minimum": 0,
             "maximum": 35,
             "type": "string",
             "nullable": true
           },
           "txId": {
             "description": "Unique identifier used by the client financial institution to identify this transaction in scheme.",
+            "minimum": 1,
+            "maximum": 35,
             "type": "string",
             "nullable": true
           },
@@ -178,13 +183,15 @@
           },
           "remittanceInformationUnstructured": {
             "description": "Unstructured remittance information for this transaction. Either unstructured or structured may be provided; not both.",
-            "minimum": 1,
+            "example": "Karma payment; €1224.48; REF:22334455",
+            "minimum": 0,
             "maximum": 140,
             "type": "string",
             "nullable": true
           },
           "remittanceInformationStructured": {
             "description": "Structured remittance information for this transaction. Either structured or unstructured may be provided; not both.",
+            "example": null,
             "minimum": 1,
             "maximum": 140,
             "type": "string",
@@ -192,6 +199,7 @@
           },
           "requestedCollectionDate": {
             "description": "The date on which the creditor requests the funds to be collected. Formatted yyyy-MM-dd.",
+            "example": "2026-08-27",
             "type": "string",
             "format": "date",
             "nullable": true
@@ -303,7 +311,7 @@
           },
           "townLocationName": {
             "description": "Specific location name within the town.",
-            "example": "Sub location",
+            "example": "Town sublocation example",
             "type": "string",
             "nullable": true
           },
