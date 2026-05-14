@@ -14,7 +14,7 @@ import ExternalLink from 'src/components/external-link';
 ## SEPA Direct Debit
 
 <Callout colour="green">
-<h2>SEPA Direct Debit is coming soon</h2>
+<h3>SEPA Direct Debit is coming soon</h3>
 <p>All information on this page describes a solution that is <strong>not yet live in production and therefore could change</strong>. This includes any endpoint and webhook details. The information is being provided early to aid you in integrating with our API in our EU simulation environment.</p>
 </Callout>
 
@@ -40,8 +40,6 @@ You are responsible for ensuring that:
 <strong>Note:</strong> ClearBank does not validate mandate existence or correctness when processing SDD collections. Responsibility for mandate management remains with the creditor.
 </Callout>
 
----
-
 ### Pre-notification
 
 Under the SEPA Core Direct Debit scheme, creditors are required to notify debtors in advance of an upcoming direct debit collection. This is known as **pre-notification**.
@@ -49,8 +47,6 @@ Under the SEPA Core Direct Debit scheme, creditors are required to notify debtor
 Pre-notification is a scheme obligation between the creditor and the debtor and typically includes the collection amount and date. The timing of the notification is defined by the EPC rulebook unless an alternative agreement is in place.
 
 ClearBank does not validate or enforce pre-notification requirements, and pre-notification is not represented in the API or event model.
-
----
 
 ### Payment cycles
 
@@ -75,8 +71,6 @@ Because processing is not immediate, you should design your integration to be **
 <Callout colour="blue">  
 <strong>Note:</strong> Scheme timelines are defined by the EPC SEPA Core Direct Debit rulebook and may change. You should not rely on fixed day counts when modelling payment states.
 </Callout>
-
----
 
 ## Simulating inbound SEPA Direct Debits
 
@@ -140,26 +134,12 @@ Because processing is not immediate, you should design your integration to be **
 ]
 ```
 
----
-
 ## Webhooks
 
 ClearBank uses webhooks to notify you of inbound SEPA Core Direct Debit activity and settlement outcomes. You should subscribe to these webhooks to keep your systems in sync with scheme events.
 
-### Incoming collection
+<WebhookPlaceholder render='sepa-dd-incoming-collection-received-v1' />
 
-> **Placeholder**  
->  
-> _SEPA Direct Debit Incoming Collection webhook_
+<WebhookPlaceholder render='sepa-dd-payment-settled-v1' />
 
-### Payment settled
-
-> **Placeholder**  
->  
-> _SEPA Direct Debit Payment Settled webhook_
-
-### Ledger notification
-
-> **Placeholder**  
->  
-> _Customer Accounts Transaction Completed_
+<WebhookPlaceholder render='sctuk-customer-accounts-transaction-completed-v1' />
