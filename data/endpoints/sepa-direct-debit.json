@@ -5,7 +5,7 @@
     "version": "1.0.SepaDD"
   },
   "paths": {
-    "/v1/inbound-direct-debits": {
+    "/payments/sepa-dd/v1/emulator/inbound-direct-debits": {
       "post": {
         "tags": [
           "InboundDirectDebit"
