@@ -32,7 +32,7 @@ From an integration perspective, mandates are **referenced rather than transmitt
 
 You are responsible for ensuring that:
 
-- A valid mandate exists for each collection.
+- A valid mandate exists for each payment collection.
 - Mandate details can be produced in the event of a dispute or scheme enquiry.
 - Mandates are managed in accordance with the EPC's SEPA Core Direct Debit rulebook.
 
@@ -72,11 +72,13 @@ Because processing is not immediate, you should design your integration to be **
 <strong>Note:</strong> Scheme timelines are defined by the EPC SEPA Core Direct Debit rulebook and may change. You should not rely on fixed day counts when modelling payment states.
 </Callout>
 
-## Simulating inbound SEPA Direct Debits
+## Simulating inbound SEPA Direct Debit collections
+
+![A message flow diagram showing which responses and webhooks you will receive after requesting to simulate an inbound direct debit.](/assets/images/sepa-dd/sepa-dd-flow.svg)
 
 <EndpointBlock
   type="post"
-  title="Simulate an inbound SDD payment"
+  title="Simulate an inbound SDD payment request"
   endpoints={[
     {
       path: "/v1/inbound-direct-debits",

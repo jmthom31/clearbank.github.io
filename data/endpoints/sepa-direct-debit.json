@@ -62,7 +62,8 @@
               }
             }
           }
-        }
+        },
+        "description": "Use this endpoint to simulate 1-5 SEPA Core Direct Debit payments. You may request this using an array of the following payload."
       }
     }
   },
@@ -114,7 +115,7 @@
         "properties": {
           "name": {
             "description": "The name used to identify the legal owner of the account.",
-            "example": "Billy Bob",
+            "example": "Billiam Huang",
             "minimum": 1,
             "maximum": 70,
             "type": "string",
@@ -167,6 +168,7 @@
           },
           "mandateId": {
             "description": "Unique identification, as assigned by the creditor, to unambiguously identify the mandate.",
+            "example": "MANDATE-007",
             "minimum": 1,
             "maximum": 35,
             "type": "string",
@@ -269,7 +271,7 @@
           },
           "streetName": {
             "description": "Name of a street or thoroughfare.",
-            "example": "Long Road",
+            "example": "Distelweg",
             "minLength": 1,
             "maxLength": 70,
             "type": "string",
@@ -329,7 +331,7 @@
           },
           "postCode": {
             "description": "Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail.",
-            "example": "PE2 3RE",
+            "example": "1031 HB",
             "minLength": 1,
             "maxLength": 16,
             "type": "string",
@@ -337,7 +339,7 @@
           },
           "countrySubdivision": {
             "description": "Identifies a subdivision of a country such as state, region, or county.",
-            "example": "Buckinghamshire",
+            "example": "North Holland",
             "minLength": 1,
             "maxLength": 35,
             "type": "string",
@@ -354,7 +356,7 @@
           },
           "addressLine": {
             "description": "Address presented in a freetext format, as defined by postal services.",
-            "example": "",
+            "example": "6A, Floor 27, 322 Long Road, Mega City One, North Holland, Netherlands",
             "type": "string",
             "nullable": true
           }
