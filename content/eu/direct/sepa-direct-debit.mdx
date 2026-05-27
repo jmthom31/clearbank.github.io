@@ -50,7 +50,7 @@ ClearBank does not validate or enforce pre-notification requirements, and pre-no
 
 ### Payment cycles
 
-SEPA Core Direct Debit payments are processed using **batch-based clearing and settlement cycles**, rather than real-time processing. ClearBank receives inbound collection instructions from the scheme and applies the resulting debit to the debtor account.
+SEPA Core Direct Debit payments are processed using **batch-based clearing and settlement cycles**, rather than real-time processing. ClearBank receives debit collection instructions from the scheme and applies the resulting debit to the debtor account.
 
 At a high level, a SEPA Core Direct Debit follows these stages:
 
@@ -140,8 +140,8 @@ Because processing is not immediate, you should design your integration to be **
 
 ClearBank uses webhooks to notify you of inbound SEPA Core Direct Debit activity and settlement outcomes. You should subscribe to these webhooks to keep your systems in sync with scheme events.
 
-<WebhookPlaceholder render='sepa-dd-incoming-collection-received-v1' />
+<WebhookPlaceholder render='sepa-dd-debit-payment-collection-pending-v1' />
 
-<WebhookPlaceholder render='sepa-dd-payment-settled-v1' />
+<WebhookPlaceholder render='sepa-dd-debit-payment-completed-v1' />
 
 <WebhookPlaceholder render='sctuk-customer-accounts-transaction-completed-v1' />
